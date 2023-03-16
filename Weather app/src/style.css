@@ -1,0 +1,23 @@
+body {
+    background-image: url("./img/background1.png");
+    background-repeat: repeat;
+}
+
+
+
+#table-container {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+  
