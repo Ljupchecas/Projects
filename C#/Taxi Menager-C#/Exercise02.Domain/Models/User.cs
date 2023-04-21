@@ -4,6 +4,8 @@ namespace Exercise02.Domain.Models
 {
     public class User
     {
+        public User() { }
+
         public User(int id, string username, string password, Role role)
         {
             Id = id;

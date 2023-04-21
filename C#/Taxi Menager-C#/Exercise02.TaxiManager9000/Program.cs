@@ -1,45 +1,87 @@
 ﻿using Exercise02.Domain;
 using Exercise02.Domain.Enums;
 using Exercise02.Domain.Models;
+using Exercise02.Services;
 using System.Data;
+using System.Xml.Serialization;
 
-List<User> users = new List<User> {
-                new User(1, "admin", "admin123", Role.Administrator),
-                new User(2, "manager", "manager123", Role.Manager),
-                new User(3, "maintenance", "maintenance123", Role.Maintenance)
-            };
+User currentUser = null;
 
-
-while(true)
+while (true)
 {
     #region LogIn
 
-    Console.Clear();
-    Console.WriteLine("Taxi Manager 9000");
+    //Console.Clear();
+    TextHelper.WriteInColor("Taxi Manager 9000", ConsoleColor.Yellow);
+    Console.WriteLine();
     Console.WriteLine("Login:");
-    bool isLoggedIn = false;
-    while (!isLoggedIn)
+    Console.WriteLine();
+
+    bool isLoggedIn = true;
+    while (isLoggedIn)
     {
         Console.Write("Username: ");
         string username = Console.ReadLine();
         Console.Write("Password: ");
         string password = Console.ReadLine();
 
-        User user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
+         User user = StaticDatabase.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
 
         if (user != null)
         {
             TextHelper.WriteInColor($"Successful Login! Welcome {user.Role} user!", ConsoleColor.Green);
+            currentUser = user;
             isLoggedIn = false;
         }
         else
         {
-            TextHelper.WriteInColor("Login unsuccessful. Please try again", ConsoleColor.Red);
+            Console.Clear();
+            TextHelper.WriteInColor("The user does not exist! Please try again", ConsoleColor.Red);
+
         }
     }
     #endregion
+
+    #region Main Manu
+    bool exitToLogIn = false;
+
+    while (!exitToLogIn)
+    {
+        Console.Clear();
+
+        Console.WriteLine("Main manu");
+        Console.WriteLine();
+        Console.WriteLine($"Welcome {currentUser.Username}");
+
+        switch (currentUser.Role)
+        {
+            case Role.Administrator:
+
+                AdministratorService.Menu();
+
+                AdministratorService.Choice();
+
+                break;
+            case Role.Manager:
+
+                ManagerService.Menu();
+
+
+                break;
+            case Role.Maintenance:
+
+                MaintenanceService.Menu();
+
+                break;
+            default:
+                break;
+        }
+    }
+   
+
+
+
+
+   
+    #endregion
 }
-
-
-
-

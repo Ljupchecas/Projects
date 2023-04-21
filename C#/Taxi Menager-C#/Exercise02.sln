@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise02.TaxiManager9000", "Exercise02.TaxiManager9000\Exercise02.TaxiManager9000.csproj", "{C9EA3093-4342-46B1-B7CF-3F9C0538BCAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercise02.TaxiManager9000", "Exercise02.TaxiManager9000\Exercise02.TaxiManager9000.csproj", "{C9EA3093-4342-46B1-B7CF-3F9C0538BCAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise02.Domain", "Exercise02.Domain\Exercise02.Domain.csproj", "{C12178AF-5834-4087-A6EA-6C0D800C5181}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercise02.Domain", "Exercise02.Domain\Exercise02.Domain.csproj", "{C12178AF-5834-4087-A6EA-6C0D800C5181}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise02.Services", "Exercise02.Services\Exercise02.Services.csproj", "{77D1D5F0-5C1F-42AC-B441-26A701B90B8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C12178AF-5834-4087-A6EA-6C0D800C5181}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C12178AF-5834-4087-A6EA-6C0D800C5181}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C12178AF-5834-4087-A6EA-6C0D800C5181}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D1D5F0-5C1F-42AC-B441-26A701B90B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D1D5F0-5C1F-42AC-B441-26A701B90B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D1D5F0-5C1F-42AC-B441-26A701B90B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D1D5F0-5C1F-42AC-B441-26A701B90B8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
