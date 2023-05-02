@@ -25,19 +25,17 @@ while (true)
         Console.Write("Password: ");
         string password = Console.ReadLine();
 
-         User user = StaticDatabase.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+        currentUser = StaticDatabase.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
 
-        if (user != null)
+        if (currentUser != null)
         {
-            TextHelper.WriteInColor($"Successful Login! Welcome {user.Role} user!", ConsoleColor.Green);
-            currentUser = user;
+            TextHelper.WriteInColor($"Successful Login! Welcome {currentUser.Role} user!", ConsoleColor.Green);
             isLoggedIn = false;
         }
         else
         {
             Console.Clear();
             TextHelper.WriteInColor("The user does not exist! Please try again", ConsoleColor.Red);
-
         }
     }
     #endregion
@@ -59,7 +57,8 @@ while (true)
 
                 AdministratorService.Menu();
 
-                AdministratorService.Choice();
+                exitToLogIn = !AdministratorService.Choice(currentUser);
+
 
                 break;
             case Role.Manager:

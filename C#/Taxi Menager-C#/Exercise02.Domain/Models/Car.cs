@@ -2,6 +2,19 @@
 {
     public class Car
     {
+        private static int _driverCounter = 1;
+
+        public Car(string model, int licensePlate, DateTime licensePlateExpiryDate, List<Driver> assignedDrivers)
+        {
+            Id = _driverCounter;
+            Model = model;
+            LicensePlate = licensePlate;
+            LicensePlateExpiryDate = licensePlateExpiryDate;
+            AssignedDrivers = assignedDrivers;
+
+            _driverCounter++;
+        }
+
         public int Id { get; set; }
         public string Model { get; set; }
         public int LicensePlate { get; set; }

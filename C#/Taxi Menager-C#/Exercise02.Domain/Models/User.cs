@@ -6,15 +6,19 @@ namespace Exercise02.Domain.Models
     {
         public User() { }
 
-        public User(int id, string username, string password, Role role)
+        private static int _userCounter = 1;
+
+        public User(string username, string password, Role role)
         {
-            Id = id;
+            Id = _userCounter;
             Username = username;
             Password = password;
             Role = role;
+
+            _userCounter++;
         }
 
-        public int Id { get; set; }
+        private int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public Role Role { get; set; }

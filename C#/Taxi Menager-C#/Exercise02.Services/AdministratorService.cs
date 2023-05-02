@@ -7,6 +7,15 @@ namespace Exercise02.Services
 {
     public static class AdministratorService
     {
+        public static void InsertUser(User user)
+        {
+            StaticDatabase.Users.Add(user);
+        }
+        public static void TerminateUser(User user)
+        {
+            StaticDatabase.Users.Remove(user);
+        }
+
         public static void Menu()
         {
             Console.WriteLine("1) New User");
@@ -15,7 +24,7 @@ namespace Exercise02.Services
             Console.WriteLine("4) Exit");
         }
         
-        public static void Choice()
+        public static bool Choice(User user)
         {
             int choice = TextHelper.ValidateNumber(Console.ReadLine());
 
@@ -49,11 +58,9 @@ namespace Exercise02.Services
                         }
                         else
                         {
-                            StaticDatabase.InsertUser(newUser);
+                            InsertUser(newUser);
                             TextHelper.WriteInColor("Added new user", ConsoleColor.Green);
                         }
-
-
 
 
                         Console.WriteLine("Press any key to back to main manu");
@@ -75,8 +82,7 @@ namespace Exercise02.Services
 
                         int userToRemove = TextHelper.ValidateNumber(Console.ReadLine());
 
-                        //StaticDatabase.TerminateUser(userToRemove); // zosto ne mozam ova da go napravam isto ako InsertUser vo dodavanje (isto imam vo StaticDatabase)
-                        StaticDatabase.Users.RemoveAt(userToRemove - 1);
+                        TerminateUser(StaticDatabase.Users[userToRemove - 1]);
 
                         TextHelper.WriteInColor("User removed", ConsoleColor.Green);
                         Console.WriteLine("Press any key to back to main manu");
@@ -85,14 +91,17 @@ namespace Exercise02.Services
                     }
 
                 case 3:
-                    break;
+                    {
+                        UserService.ChangePassword(user);
+
+                        break;
+                    }
+                    
                 case 4:
-                    // KOPCE ZA EXIT
-
-                    // void Exit() { } - Nesto ovaka i koga korisnikot ke klikne 4 da se povika ova i ne znam dali da ima nekoj parametar za exitToLogIn vo Program.cs da stane false i da ispadne od toj while vo Main Manu i da se vrati vo Log in menu
-
-                    break;
+                    Console.Clear();
+                    return false;
             }
+            return true;
         }
 
 

@@ -1,26 +1,39 @@
-﻿using Exercise02.Domain.Models;
+﻿using Exercise02.Domain;
+using Exercise02.Domain.Models;
 
 namespace Exercise02.Services
 {
-    public class UserService
+    public static class UserService
     {
-        public static void ChangePassword()
+        public static void ChangePassword(User user)
         {
             Console.Clear();
+
+            Console.Write("Before change :");
+            StaticDatabase.Users.ForEach(u => Console.WriteLine($"{u.Username} - {u.Password}"));
+
             Console.WriteLine("Change Password:");
             Console.WriteLine();
             Console.Write("Old Password: ");
             string oldPassword = Console.ReadLine();
+            Console.Write("New Password: ");
+            string newPassword = Console.ReadLine();
 
-            //if(currentUser.Password != oldPassword) // Kako da dojdam do currentUser od Program.cs? Kako da ja nparavam ovaa logika, i posle samo UserService.ChangePassword() da go stavam vo AdminService i drugite 2.
-            //{
-            //    // logika
-            //}
-            //else
-            //{
-            //    // logika
-            //}
+
+            if (user.Password != oldPassword)
+            {
+                Console.WriteLine("You entered an incorrect password");
+            }
+            else
+            {
+                user.Password = newPassword;
+            }
+
+            Console.Write("After change :");
+            StaticDatabase.Users.ForEach(u => Console.WriteLine($"{u.Username} - {u.Password}"));
 
         }
     }
 }
+
+
